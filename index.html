@@ -1,0 +1,783 @@
+<!DOCTYPE html>
+<html lang="fr">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>CV - Alban Marmol</title>
+        <link rel="stylesheet" href="{% static 'css/app.css' %}?v=4">
+        <link rel="stylesheet" href="{% static 'fontawesomefree/css/all.min.css' %}">
+        <style>
+            :root {
+                color-scheme: dark;
+                color: #111;
+                background: #f8f9fb;
+                font-family: Inter, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+            }
+
+            * {
+                box-sizing: border-box;
+            }
+
+            html,
+            body {
+                margin: 0;
+                padding: 0;
+                min-height: 100%;
+            }
+
+            body {
+                background: #f8f9fb;
+                color: #111;
+                line-height: 1.6;
+            }
+
+            .page-shell {
+                display: flex;
+                flex-direction: column;
+                min-height: 100vh;
+            }
+
+            .site-header {
+                background: #1e293b;
+                color: #f8fafc;
+                padding: 1rem 1.25rem;
+                display: flex;
+                align-items: center;
+                justify-content: space-between;
+                gap: 1rem;
+            }
+
+            .brand a {
+                color: #f8fafc;
+                text-decoration: none;
+                font-size: 1.25rem;
+                font-weight: 700;
+            }
+
+            .nav-toggle {
+                display: none;
+                border: 0;
+                background: transparent;
+                color: #f8fafc;
+                font-size: 1.5rem;
+                cursor: pointer;
+            }
+
+            .site-nav {
+                display: flex;
+                gap: 1rem;
+                flex-wrap: wrap;
+                align-items: center;
+            }
+
+            .site-nav a {
+                color: #e2e8f0;
+                text-decoration: none;
+                font-weight: 500;
+            }
+
+            .site-nav a:hover,
+            .site-nav a:focus-visible {
+                color: #f8fafc;
+            }
+
+            .site-nav a i {
+                display: inline-block;
+                margin-right: 0.4rem;
+            }
+
+            .site-main {
+                width: min(1200px, calc(100% - 2rem));
+                margin: 2rem auto;
+                flex: 1;
+            }
+
+
+            .site-footer {
+                background: #111827;
+                color: #cbd5e1;
+                padding: 1rem 1.25rem;
+            }
+
+            .footer-content {
+                max-width: 1200px;
+                margin: 0 auto;
+            }
+
+            h1,
+            h2,
+            h3,
+            h4,
+            h5,
+            h6 {
+                color: #0f172a;
+                margin-top: 0;
+            }
+
+            p {
+                margin: 0 0 1rem;
+            }
+
+            .project-grid {
+                display: grid;
+                grid-template-columns: repeat(2, minmax(0, 1fr));
+                gap: 1.5rem;
+            }
+
+            .project-card,
+            .project-detail {
+                background: #ffffff;
+                border: 1px solid #e2e8f0;
+                border-radius: 1rem;
+                padding: 1.5rem;
+                box-shadow: 0 10px 30px rgba(15, 23, 42, 0.08);
+            }
+
+            .project-card h2 {
+                margin-top: 0;
+                margin-bottom: 0.75rem;
+                font-size: 1.25rem;
+            }
+
+            .project-card h2 a {
+                color: #0f172a;
+                text-decoration: none;
+            }
+
+            .project-card p {
+                margin-bottom: 1rem;
+                color: #475569;
+            }
+
+            .project-meta {
+                display: flex;
+                flex-wrap: wrap;
+                gap: 0.75rem;
+                color: #64748b;
+                font-size: 0.95rem;
+                align-items: center;
+            }
+
+            .project-meta .project-type {
+                white-space: nowrap;
+            }
+
+            .project-status {
+                display: inline-flex;
+                align-items: center;
+                padding: 0.25rem 0.75rem;
+                border-radius: 9999px;
+                font-size: 0.85rem;
+                font-weight: 600;
+                text-transform: uppercase;
+                letter-spacing: 0.08em;
+                background: #e2e8f0;
+                color: #0f172a;
+            }
+
+            .status-NOT_STARTED {
+                background: #fde68a;
+                color: #92400e;
+            }
+
+            .status-ANALYSIS {
+                background: #c7d2fe;
+                color: #3730a3;
+            }
+
+            .status-IN_PROGRESS {
+                background: #dbeafe;
+                color: #1e40af;
+            }
+
+            .status-PAUSED {
+                background: #f8fafc;
+                color: #334155;
+                border: 1px solid #cbd5e1;
+            }
+
+            .status-TESTING {
+                background: #fee2e2;
+                color: #991b1b;
+            }
+
+            .status-RELEASED {
+                background: #dcfce7;
+                color: #166534;
+            }
+
+            .status-MAINTENANCE {
+                background: #e0f2fe;
+                color: #0369a1;
+            }
+
+            .status-ARCHIVED {
+                background: #e2e8f0;
+                color: #475569;
+            }
+
+            .status-ABANDONED {
+                background: #f5f3ff;
+                color: #5b21b6;
+            }
+
+            .project-detail section {
+                margin-top: 1.5rem;
+            }
+
+            .project-detail section h2 {
+                margin-bottom: 0.75rem;
+                font-size: 1.1rem;
+            }
+
+            @media (max-width: 900px) {
+                .project-grid {
+                    grid-template-columns: 1fr;
+                }
+            }
+
+            @media (max-width: 768px) {
+                .site-header {
+                    flex-wrap: wrap;
+                    align-items: flex-start;
+                }
+
+                .nav-toggle {
+                    display: inline-flex;
+                }
+
+                .site-nav {
+                    width: 100%;
+                    flex-direction: column;
+                    gap: 0.75rem;
+                    margin-top: 1rem;
+                    display: none;
+                }
+
+                .site-nav.active {
+                    display: flex;
+                }
+
+                .site-main {
+                    margin: 1.5rem auto;
+                }
+            }
+
+            @media (prefers-reduced-motion: reduce) {
+                *,
+                *::before,
+                *::after {
+                    transition-duration: 0ms !important;
+                }
+            }
+
+            .cv-page {
+                display: grid;
+                grid-template-columns: 320px minmax(0, 1fr);
+                gap: 2rem;
+                align-items: start;
+            }
+
+            .cv-sidebar,
+            .cv-content {
+                background: #ffffff;
+                border: 1px solid #e2e8f0;
+                border-radius: 1.25rem;
+                box-shadow: 0 12px 32px rgba(15, 23, 42, 0.08);
+            }
+
+            .cv-sidebar {
+                padding: 2rem;
+                position: sticky;
+                top: 2rem;
+                background:
+                    linear-gradient(180deg, #0f172a 0%, #1e293b 100%);
+                color: #f8fafc;
+            }
+
+            .cv-content {
+                padding: 2rem;
+            }
+
+            .cv-name {
+                margin: 0 0 0.5rem;
+                font-size: 2rem;
+                line-height: 1.1;
+                color: #ffffff;
+            }
+
+            .cv-role {
+                margin: 0 0 1.5rem;
+                color: #cbd5e1;
+                font-size: 1rem;
+                font-weight: 600;
+                letter-spacing: 0.04em;
+                text-transform: uppercase;
+            }
+
+            .cv-summary {
+                margin-bottom: 2rem;
+                color: #e2e8f0;
+            }
+
+            .cv-contact,
+            .cv-skills,
+            .cv-languages {
+                margin-top: 2rem;
+            }
+
+            .cv-sidebar h2 {
+                margin-bottom: 0.75rem;
+                font-size: 0.95rem;
+                color: #ffffff;
+                text-transform: uppercase;
+                letter-spacing: 0.08em;
+            }
+
+            .cv-sidebar ul {
+                list-style: none;
+                padding: 0;
+                margin: 0;
+            }
+
+            .cv-sidebar li {
+                margin-bottom: 0.6rem;
+                color: #cbd5e1;
+            }
+
+            .cv-section + .cv-section {
+                margin-top: 2.5rem;
+            }
+
+            .cv-section-title {
+                margin-bottom: 1rem;
+                padding-bottom: 0.75rem;
+                border-bottom: 1px solid #e2e8f0;
+                font-size: 1.1rem;
+                text-transform: uppercase;
+                letter-spacing: 0.06em;
+                color: #0f172a;
+            }
+
+            .timeline {
+                display: grid;
+                gap: 1.25rem;
+            }
+
+            .timeline-item {
+                position: relative;
+                padding: 1.25rem 1.25rem 1.25rem 1.5rem;
+                border-left: 3px solid #cbd5e1;
+                background: #f8fafc;
+                border-radius: 0 1rem 1rem 0;
+            }
+
+            .timeline-item h3 {
+                margin-bottom: 0.35rem;
+                font-size: 1.05rem;
+                color: #0f172a;
+            }
+
+            .timeline-meta {
+                margin-bottom: 0.75rem;
+                color: #475569;
+                font-size: 0.95rem;
+                font-weight: 600;
+            }
+
+            .timeline-item p:last-child {
+                margin-bottom: 0;
+            }
+
+            /* Espace régulier dans chaque carte */
+            .timeline-item p {
+                margin: 0 0 0.65rem;
+            }
+
+            .timeline-item ul {
+                margin: 0.45rem 0 0;
+                padding-left: 1.1rem;
+                list-style: none;
+            }
+
+            .timeline-item li {
+                position: relative;
+                margin: 0 0 0.45rem;
+                padding-left: 0.95rem;
+                line-height: 1.45;
+                color: #1f2937;
+            }
+
+            /* Puce discrète et moderne */
+            .timeline-item li::before {
+                content: "";
+                position: absolute;
+                left: 0;
+                top: 0.74em; /* au lieu de 0.58em */
+                width: 0.38rem;
+                height: 0.38rem;
+                border-radius: 9999px;
+                background: #64748b;
+                transform: translateY(-50%);
+            }
+
+            /* Mettre en valeur les lignes "Chiffres clés :" */
+            .timeline-item li:has(strong) {
+                background: #eaf2ff;
+                border: 1px solid #cfe0ff;
+                border-radius: 0.65rem;
+                padding: 0.55rem 0.7rem 0.55rem 1.5rem;
+                margin-top: 0.6rem;
+            }
+
+            .timeline-item li:has(strong)::before {
+                background: #2563eb;
+                width: 0.45rem;
+                height: 0.45rem;
+            }
+
+            /* Fallback si :has() n'est pas supporté:
+            ajoute class="kpi" sur les <li> Chiffres clés */
+            .timeline-item li.kpi {
+                position: relative; /* important pour centrer la puce sur ce bloc */
+                background: #eaf2ff;
+                border: 1px solid #cfe0ff;
+                border-radius: 0.65rem;
+                padding: 0.55rem 0.7rem 0.55rem 1.5rem;
+                margin-top: 0.6rem;
+            }
+
+            .timeline-item li.kpi::before {
+                left: 0.65rem;
+                top: 50%;
+                transform: translate(-50%, -50%);
+                background: #2563eb;
+                width: 0.45rem;
+                height: 0.45rem;
+            }
+
+            /* Petite respiration entre sections */
+            .cv-section-title + .timeline {
+                margin-top: 0.35rem;
+            }
+
+            /* Mobile: éviter les blocs trop denses */
+            @media (max-width: 640px) {
+                .timeline-item {
+                    padding: 1rem 0.95rem 1rem 1.1rem;
+                }
+
+                .timeline-item ul {
+                    padding-left: 0.9rem;
+                }
+
+                .timeline-item li {
+                    padding-left: 0.8rem;
+                    margin-bottom: 0.4rem;
+                }
+            }
+
+            .skill-tags {
+                display: flex;
+                flex-wrap: wrap;
+                gap: 0.75rem;
+            }
+
+            .skill-tags span {
+                display: inline-flex;
+                align-items: center;
+                padding: 0.55rem 0.9rem;
+                border-radius: 9999px;
+                background: #e2e8f0;
+                color: #0f172a;
+                font-size: 0.92rem;
+                font-weight: 600;
+            }
+
+            @media (max-width: 900px) {
+                .cv-page {
+                    grid-template-columns: 1fr;
+                }
+
+                .cv-sidebar {
+                    position: static;
+                }
+            }
+
+            @media (max-width: 640px) {
+                .cv-sidebar,
+                .cv-content {
+                    padding: 1.5rem;
+                }
+
+                .cv-name {
+                    font-size: 1.7rem;
+                }
+            }
+            .timeline-item li.kpi::before {
+                display: none;
+            }
+            .timeline-item li:has(strong)::before {
+                display: none;
+            }
+
+            @page {
+            size: A4;
+            margin: 12mm;
+            }
+
+            @media print {
+                html,
+                body {
+                background: #fff !important;
+                }
+
+                /* Cache le chrome global du site */
+                .site-header,
+                .site-footer,
+                .nav-toggle {
+                    display: none !important;
+                }
+
+                .site-main {
+                    width: 100% !important;
+                    margin: 0 !important;
+                }
+
+                .cv-page {
+                    display: block !important;
+                    gap: 0 !important;
+                }
+
+                .cv-sidebar,
+                .cv-content {
+                    box-shadow: none !important;
+                    border: 1px solid #d1d5db !important;
+                    border-radius: 8px !important;
+                    background: #fff !important;
+                }
+
+                .cv-sidebar {
+                    position: static !important;
+                    color: #0f172a !important;
+                    margin-bottom: 10mm;
+                    padding: 6mm !important;
+                }
+
+                .cv-sidebar h2,
+                .cv-role,
+                .cv-summary,
+                .cv-sidebar li,
+                .cv-name {
+                    color: #0f172a !important;
+                }
+
+                .cv-content {
+                    padding: 6mm !important;
+                }
+
+                /* Evite les coupures de blocs */
+                .cv-section,
+                .timeline-item {
+                    break-inside: avoid;
+                    page-break-inside: avoid;
+                }
+
+                .timeline {
+                    gap: 4mm !important;
+                }
+
+                .timeline-item {
+                    border-left-color: #9ca3af !important;
+                    background: #fff !important;
+                }
+
+                /* KPI lisible en N&B */
+                .timeline-item li.kpi {
+                    background: #f3f4f6 !important;
+                    border-color: #d1d5db !important;
+                }
+
+                /* Pas de puce pour KPI */
+                .timeline-item li.kpi::before,
+                .timeline-item li:has(strong)::before {
+                    display: none !important;
+                }
+            }
+
+        </style>
+    </head>
+   
+
+ <body>
+     <div class="page-shell">
+        <main class="site-main">
+            <section class="cv-page">
+                <aside class="cv-sidebar">
+                    <h1 class="cv-name">Alban Marmol</h1>
+                    <p class="cv-role">Développeur Web</p>
+                    <p class="cv-summary">
+                        Conception d’applications web robustes.
+                    </p>
+
+                    <div class="cv-contact">
+                        <h2>Contact</h2>
+                        <ul>
+                            <li>Email : alban.marmol.perso@gmail.com</li>
+                            <li>Téléphone : 06 98 35 29 98</li>
+                            <li>Ville : Montreuil</li>
+                            <!--<li>LinkedIn : linkedin.com/in/albanmarmol</li>-->
+                            <!-- <li>GitHub : github.com/albanmarmol</li> -->
+                        </ul>
+                    </div>
+
+                    <div class="cv-skills">
+                        <h2>Compétences clés</h2>
+                        <ul>
+                            <li>Etude et analyse du besoin</li>
+                            <li>Gestion de projet</li>
+                            <li>Modélisation de données</li>
+                            <li>Architecture logicielle</li>
+                            <li>Développement backend</li>
+                            <li>Développement frontend</li>
+                            <li>Tests / qualité / maintenance</li>
+                        </ul>
+                    </div>
+
+                    <div class="cv-languages">
+                        <h2>Langues</h2>
+                        <ul>
+                            <li>Français : langue maternelle</li>
+                            <li>Anglais : niveau professionnel</li>
+                        </ul>
+                    </div>
+                </aside>
+
+                <div class="cv-content">
+                    <section class="cv-section">
+                        <h2 class="cv-section-title">Profil</h2>
+                        <p>
+                            Avec 20 ans d'expérience dans le développement web, j'ai contribué au développement de nombreux projets internes pour Veolia Eau France et Île de France.<br>
+                            Depuis 2025, j'intègre Copilot dans mon flux de travail quotidien pour améliorer la productivité et la qualité du code.
+                        </p>
+                    </section>
+                    <section class="cv-section">
+                        <h2 class="cv-section-title">Expériences professionnelles - Missions menées en parallèle sur plusieurs produits internes</h2>
+                        <div class="timeline">
+                            <article class="timeline-item">
+                                <h3>Développeur Web - Juvanet (Veolia Eau Île-de-France)</h3>
+                                <p class="timeline-meta">2007 - 2013</p>
+                                <p>Développement d’applications Intranet pour les équipes métiers.</p>
+                                <ul>
+                                    <li>Conception et développement de nouvelles fonctionnalités backend et frontend.</li>
+                                    <li>Optimisation des performances et maintenance applicative.</li>
+                                    <li>Réalisations principales : Infocentre RH, planification d’interventions, tableaux de bord financiers.</li>
+                                    <li>Support utilisateur et accompagnement des équipes internes.</li>
+                                </ul>
+                            </article>
+
+                            <article class="timeline-item">
+                                <h3>Développeur Web - Juvanet (Veolia Eau France)</h3>
+                                <p class="timeline-meta">2007 - 2026</p>
+                                <p>Développement d’une plateforme de reporting réglementaire pour la production des RAD.</p>
+                                <ul>
+                                    <li>Conception et déploiement progressif de la solution, région par région.</li>
+                                    <li>Collaboration avec les directions commerciale et opérations pour cadrage, recette et mise en production.</li>
+                                    <li>Intégration de données issues des SI techniques (qualité de l’eau, clientèle, patrimoine, etc.).</li>
+                                    <li>Formation des utilisateurs et support fonctionnel continu.</li>
+                                    <li class="kpi"><strong>Chiffres clés :</strong> +5 000 rapports générés par an depuis 2009, 500 utilisateurs actifs.</li>
+                                </ul>
+                            </article>
+
+                            <article class="timeline-item">
+                                <h3>Développeur Web - Juvanet (Veolia Eau France)</h3>
+                                <p class="timeline-meta">2009 - 2026</p>
+                                <p>Développement d’une application de gestion des approvisionnements.</p>
+                                <ul>
+                                    <li>Conception de la solution et déploiement progressif sur le périmètre national.</li>
+                                    <li>Mise en place des flux d’échange avec l’ERP SAP.</li>
+                                    <li>Travail en lien direct avec la direction des achats sur les cycles développement, recette et déploiement.</li>
+                                    <li>Formation des utilisateurs et maintien en conditions opérationnelles.</li>
+                                    <li class="kpi"><strong>Chiffres clés :</strong> à partir de 2015, plus de 3 000 commandes transmises à SAP chaque jour, 3 500 utilisateurs actifs en 2026.</li>
+                                </ul>
+                            </article>
+
+                            <article class="timeline-item">
+                                <h3>Développeur Web - Juvanet (Veolia Eau France)</h3>
+                                <p class="timeline-meta">2013 - 2026</p>
+                                <p>Développement d’une application de suivi et de rapprochement des temps de travail avec les SI comptable, commercial et RH.</p>
+                                <ul>
+                                    <li>Conception et déploiement progressif de la solution dans les régions.</li>
+                                    <li>Collaboration avec les directions RH et financière pour cadrage, recette et mise en production.</li>
+                                    <li>Conception et maintenance des flux entrants et sortants avec les applications métiers.</li>
+                                    <li>Accompagnement des utilisateurs et support technique.</li>
+                                    <li class="kpi"><strong>Chiffres clés :</strong> 80 à 90 % des heures travaillées rapprochées automatiquement au SI comptable chaque semaine depuis 2016, permettant de libérer du temps pour les équipes RH et les salariés.
+                                    </li>
+                                </ul>
+                            </article>
+
+                            <article class="timeline-item">
+                                <h3>Développeur Web - Juvanet (Veolia Eau France)</h3>
+                                <p class="timeline-meta">2014 - 2015</p>
+                                <p>Contribution à la migration d’applications d’un datacenter physique vers une architecture Cloud AWS.</p>
+                                <ul>
+                                    <li>Participation à la préparation technique de la migration.</li>
+                                    <li>Adaptation applicative pour l’hébergement cloud.</li>
+                                    <li>Appui à la stabilisation post-migration.</li>
+                                    <li class="kpi"><strong>Chiffres clés :</strong> Migration réussie de plusieurs applications critiques vers le cloud AWS, améliorant la disponibilité et la scalabilité des services.</li>
+                                </ul>
+                            </article>
+                        </div>
+                    </section>
+                   
+
+                    <section class="cv-section">
+                        <h2 class="cv-section-title">Diplômes et formations</h2>
+                        <div class="timeline">
+                            <article class="timeline-item">
+                                <h3>Licence professionnelle Développement et administration Internet et Intranet (DA2I)</h3>
+                                <p class="timeline-meta">IUT Robert Schuman Le Havre - 2005</p>
+                                <p>
+                                    Formation spécialisée dans le développement et l'administration des applications Internet et Intranet, incluant la conception, le déploiement et la maintenance des systèmes web.
+                                </p>
+                            </article>
+
+                            <article class="timeline-item">
+                                <h3>Formation Afpa en Informatique Industrielle (orienté Internet)</h3>
+                                <p class="timeline-meta">AFPA - 2004</p>
+                                <p>
+                                    Formation axée sur l'informatique industrielle, incluant la programmation bas niveau, la supervision des systèmes industriels et l'intégration avec les technologies Internet.
+                                </p>
+                            </article>
+                        </div>
+                    </section>
+
+                    <section class="cv-section">
+                        <h2 class="cv-section-title">Technologies</h2>
+                        <div class="skill-tags">
+                            <span>Django</span>
+                            <span>Python</span>
+                            <span>Microsoft .NET</span>
+                            <span>MVC framework</span>
+                            <span>ASP / PHP</span>
+                            <span>JavaScript</span>
+                            <span>jQuery</span>
+                            <span>HTML5</span>
+                            <span>CSS3</span>
+                            <span>REST API</span>
+                            <span>PostgreSQL</span>
+                            <span>Oracle</span>
+                            <span>Git</span>
+                            <span>AWS</span>
+                            <span>Copilot</span>
+                            <span>Terraform</span>
+                            <span>JIRA / Bitbucket</span>
+                            <span>Sublime Text</span>
+                            <span>VS Code</span>
+                        </div>
+                    </section>
+                </div>
+            </section>
+        </main>
+    </div>
+</body>
