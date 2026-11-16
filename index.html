@@ -1,787 +1,766 @@
 <!DOCTYPE html>
 <html lang="fr">
-    <head>
-        <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title>CV - Alban Marmol</title>
-        <link rel="stylesheet" href="{% static 'css/app.css' %}?v=4">
-        <link rel="stylesheet" href="{% static 'fontawesomefree/css/all.min.css' %}">
-        <style>
-            :root {
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Alban Marmol | Développeur Full Stack</title>
+    <meta name="description" content="CV d’Alban Marmol, développeur Full Stack : conception, développement et maintenance d’applications web métier.">
+    <meta name="author" content="Alban Marmol">
+    <meta property="og:type" content="profile">
+    <meta property="og:title" content="Alban Marmol | Développeur Full Stack">
+    <meta property="og:description" content="Conception d’applications web robustes.">
+    <meta property="og:locale" content="fr_FR">
+    <style>
+        :root {
+            --bg: #f3f6fa;
+            --surface: #ffffff;
+            --surface-2: #f6f9fc;
+            --text: #1f2a3a;
+            --heading: #10243f;
+            --muted: #5f7088;
+            --line: #e1e8f0;
+            --accent: #1f6fb2;
+            --accent-soft: #eaf3fb;
+            --gold: #e2a62b;
+            --side-bg: #12304f;
+            --side-text: #dce8f5;
+            --side-muted: #a5bad3;
+            --side-accent: #7dbbea;
+            --side-line: rgba(255, 255, 255, 0.15);
+            --hero-from: #1f6fb2;
+            --hero-to: #0f3a63;
+            --name-first: #bfdcf6;
+            --pill-bg: #f0b93a;
+            --pill-text: #1a2a40;
+            --radius: 0.75rem;
+            color-scheme: light;
+        }
+
+        :root[data-theme="dark"] {
+            --bg: #0b1522;
+            --surface: #111e2e;
+            --surface-2: #172638;
+            --text: #d5e0ec;
+            --heading: #f1f6fb;
+            --muted: #93a6bc;
+            --line: #22344a;
+            --accent: #6db3ea;
+            --accent-soft: #14283d;
+            --gold: #f0b93a;
+            --side-bg: #0d1a2b;
+            --side-text: #d5e0ec;
+            --side-muted: #8ea3ba;
+            --side-accent: #6db3ea;
+            --side-line: rgba(255, 255, 255, 0.1);
+            --hero-from: #1d5c94;
+            --hero-to: #0f2b48;
+            --name-first: #a9cdee;
+            --pill-bg: #f0b93a;
+            --pill-text: #1a2a40;
+            color-scheme: dark;
+        }
+
+        @media (prefers-color-scheme: dark) {
+            :root:not([data-theme="light"]) {
+                --bg: #0b1522;
+                --surface: #111e2e;
+                --surface-2: #172638;
+                --text: #d5e0ec;
+                --heading: #f1f6fb;
+                --muted: #93a6bc;
+                --line: #22344a;
+                --accent: #6db3ea;
+                --accent-soft: #14283d;
+                --gold: #f0b93a;
+                --side-bg: #0d1a2b;
+                --side-text: #d5e0ec;
+                --side-muted: #8ea3ba;
+                --side-accent: #6db3ea;
+                --side-line: rgba(255, 255, 255, 0.1);
+                --hero-from: #1d5c94;
+                --hero-to: #0f2b48;
+                --name-first: #a9cdee;
+                --pill-bg: #f0b93a;
+                --pill-text: #1a2a40;
                 color-scheme: dark;
-                color: #111;
-                background: #f8f9fb;
-                font-family: Inter, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
             }
+        }
 
-            * {
-                box-sizing: border-box;
+        * {
+            box-sizing: border-box;
+        }
+
+        body {
+            margin: 0;
+            background: var(--bg);
+            color: var(--text);
+            font-family: "Segoe UI", system-ui, -apple-system, "Helvetica Neue", Arial, sans-serif;
+            font-size: clamp(1rem, 0.96rem + 0.2vw, 1.0625rem);
+            line-height: 1.6;
+            -webkit-text-size-adjust: 100%;
+        }
+
+        h1, h2, h3, h4, h5, p, ul {
+            margin: 0;
+        }
+
+        ul {
+            padding: 0;
+            list-style: none;
+        }
+
+        a {
+            color: inherit;
+            text-decoration-color: color-mix(in srgb, currentColor 40%, transparent);
+            text-underline-offset: 0.2em;
+        }
+
+        a:hover {
+            text-decoration-color: currentColor;
+        }
+
+        :focus-visible {
+            outline: 2px solid var(--accent);
+            outline-offset: 3px;
+            border-radius: 0.25rem;
+        }
+
+        .skip-link {
+            position: absolute;
+            left: 1rem;
+            top: -4rem;
+            z-index: 10;
+            padding: 0.5rem 1rem;
+            border-radius: 0.4rem;
+            background: var(--surface);
+            color: var(--heading);
+            font-weight: 600;
+        }
+
+        .skip-link:focus {
+            top: 1rem;
+        }
+
+        /* ---------- Mise en page ---------- */
+        .page {
+            display: grid;
+            grid-template-columns: 19rem minmax(0, 1fr);
+            gap: 1.5rem;
+            align-items: start;
+            width: min(72rem, 100% - 2rem);
+            margin: 1.5rem auto 3rem;
+        }
+
+        .sidebar,
+        .content {
+            border: 1px solid var(--line);
+            border-radius: var(--radius);
+            box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
+        }
+
+        .sidebar {
+            --sp-x: 1.6rem;
+            --sp-y: 2rem;
+            overflow: hidden;
+            padding: var(--sp-y) var(--sp-x);
+            border-color: transparent;
+            background: var(--side-bg);
+            color: var(--side-text);
+        }
+
+        .content {
+            padding: clamp(1.25rem, 3vw, 2.25rem);
+            background: var(--surface);
+        }
+
+        /* ---------- Colonne latérale ---------- */
+        .side-hero {
+            margin: calc(-1 * var(--sp-y)) calc(-1 * var(--sp-x)) 1.8rem;
+            padding: 2.4rem var(--sp-x) 1.8rem;
+            background:
+                radial-gradient(14rem 10rem at 100% 0%, rgba(255, 255, 255, 0.16), transparent 70%),
+                linear-gradient(160deg, var(--hero-from), var(--hero-to));
+            border-bottom: 3px solid var(--gold);
+        }
+
+        .name {
+            font-size: clamp(2.3rem, 2rem + 1.2vw, 2.7rem);
+            font-weight: 800;
+            line-height: 1.02;
+            letter-spacing: -0.02em;
+        }
+
+        .name span {
+            display: block;
+        }
+
+        .name .first {
+            color: var(--name-first);
+            font-weight: 300;
+        }
+
+        .name .last {
+            color: #fff;
+        }
+
+        .role {
+            display: inline-block;
+            margin-top: 1rem;
+            padding: 0.3rem 0.9rem;
+            border-radius: 99px;
+            background: var(--pill-bg);
+            color: var(--pill-text);
+            font-size: 0.8rem;
+            font-weight: 700;
+            letter-spacing: 0.12em;
+            text-transform: uppercase;
+        }
+
+        .summary {
+            margin-top: 1rem;
+            color: #e4eefa;
+        }
+
+        .side-hero + .side-block {
+            margin-top: 0;
+            padding-top: 0;
+            border-top: 0;
+        }
+
+        .side-block {
+            margin-top: 1.8rem;
+            padding-top: 1.4rem;
+            border-top: 1px solid var(--side-line);
+        }
+
+        .side-block h2 {
+            display: flex;
+            align-items: center;
+            gap: 0.55rem;
+            margin-bottom: 0.9rem;
+            color: #fff;
+            font-size: 0.8rem;
+            font-weight: 700;
+            letter-spacing: 0.12em;
+            text-transform: uppercase;
+        }
+
+        .icon {
+            flex: none;
+            width: 1.15em;
+            height: 1.15em;
+            fill: none;
+            stroke: var(--side-accent);
+            stroke-width: 2;
+            stroke-linecap: round;
+            stroke-linejoin: round;
+        }
+
+        .side-block h2 .icon {
+            width: 1.3em;
+            height: 1.3em;
+        }
+
+        .side-block li {
+            margin-bottom: 0.45rem;
+            font-size: 0.95rem;
+            overflow-wrap: anywhere;
+        }
+
+        .side-block li:last-child {
+            margin-bottom: 0;
+        }
+
+        .contact li {
+            display: flex;
+            align-items: flex-start;
+            gap: 0.7rem;
+        }
+
+        .contact .icon {
+            margin-top: 0.3em;
+            width: 1.1rem;
+            height: 1.1rem;
+        }
+
+        .sr-only {
+            position: absolute;
+            width: 1px;
+            height: 1px;
+            overflow: hidden;
+            clip: rect(0 0 0 0);
+            white-space: nowrap;
+        }
+
+        .check li {
+            position: relative;
+            padding-left: 1.1rem;
+        }
+
+        .check li::before {
+            content: "";
+            position: absolute;
+            left: 0;
+            top: 0.65em;
+            width: 0.4rem;
+            height: 0.4rem;
+            border-radius: 50%;
+            background: var(--side-accent);
+        }
+
+        .tech-group + .tech-group {
+            margin-top: 0.9rem;
+        }
+
+        .tech-group h3 {
+            margin-bottom: 0.4rem;
+            color: var(--side-muted);
+            font-size: 0.72rem;
+            font-weight: 600;
+            letter-spacing: 0.1em;
+            text-transform: uppercase;
+        }
+
+        .chips {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.35rem;
+        }
+
+        .chips li {
+            margin: 0;
+            padding: 0.1rem 0.65rem;
+            border: 1px solid var(--side-line);
+            border-radius: 99px;
+            background: rgba(255, 255, 255, 0.07);
+            color: var(--side-text);
+            font-size: 0.82rem;
+        }
+
+        .sidebar a {
+            text-decoration: underline;
+        }
+
+        .theme-toggle {
+            margin-top: 1.8rem;
+            padding: 0.4rem 0.8rem;
+            border: 1px solid var(--side-line);
+            border-radius: 0.4rem;
+            background: transparent;
+            color: var(--side-muted);
+            font: inherit;
+            font-size: 0.82rem;
+            cursor: pointer;
+        }
+
+        .theme-toggle:hover {
+            color: #fff;
+            border-color: var(--side-muted);
+        }
+
+        /* ---------- Contenu ---------- */
+        .section + .section {
+            margin-top: 2.5rem;
+        }
+
+        .section-title {
+            display: flex;
+            align-items: center;
+            gap: 0.65rem;
+            margin-bottom: 1rem;
+            padding-bottom: 0.7rem;
+            border-bottom: 1px solid var(--line);
+            color: var(--heading);
+            font-size: 1.05rem;
+            font-weight: 700;
+            letter-spacing: 0.06em;
+            text-transform: uppercase;
+        }
+
+        .section-title::before {
+            content: "";
+            flex: none;
+            width: 0.3rem;
+            height: 1.1rem;
+            border-radius: 0.15rem;
+            background: var(--gold);
+        }
+
+        .profile p + p,
+        .timeline-item > p + p {
+            margin-top: 0.8rem;
+        }
+
+        .timeline {
+            display: grid;
+            gap: 1.25rem;
+        }
+
+        .timeline-item {
+            padding: 1.25rem 1.4rem;
+            border-left: 3px solid var(--accent);
+            border-radius: 0 var(--radius) var(--radius) 0;
+            background: var(--surface-2);
+        }
+
+        .timeline-item h3 {
+            margin-bottom: 0.3rem;
+            color: var(--heading);
+            font-size: 1.1rem;
+            line-height: 1.35;
+        }
+
+        .timeline-meta {
+            margin-bottom: 0.8rem;
+            color: var(--muted);
+            font-size: 0.95rem;
+            font-weight: 600;
+        }
+
+        .timeline-item > p:last-child {
+            margin-bottom: 0;
+        }
+
+        /* ---------- Projets de la mission ---------- */
+        .mission-projects {
+            margin-top: 1.4rem;
+        }
+
+        .mission-projects h4 {
+            margin-bottom: 0.2rem;
+            color: var(--accent);
+            font-size: 0.82rem;
+            font-weight: 600;
+            letter-spacing: 0.08em;
+            text-transform: uppercase;
+        }
+
+        .mission-project {
+            padding: 1.1rem 0;
+            border-top: 1px solid var(--line);
+        }
+
+        .mission-project:last-child {
+            padding-bottom: 0;
+        }
+
+        .mission-project h5 {
+            display: flex;
+            align-items: center;
+            gap: 0.55rem;
+            margin-bottom: 0.4rem;
+            color: var(--heading);
+            font-size: 1rem;
+            font-weight: 600;
+        }
+
+        .mission-project h5::before {
+            content: "";
+            flex: none;
+            width: 0.5rem;
+            height: 0.5rem;
+            border-radius: 0.12rem;
+            background: var(--gold);
+            transform: rotate(45deg);
+        }
+
+        .mission-project p + p {
+            margin-top: 0.5rem;
+        }
+
+        .project-kpi {
+            margin-top: 0.8rem;
+            padding: 0.6rem 0.9rem;
+            border-left: 3px solid var(--accent);
+            border-radius: 0 0.4rem 0.4rem 0;
+            background: var(--accent-soft);
+            font-size: 0.95rem;
+            line-height: 1.5;
+        }
+
+        .project-kpi strong {
+            color: var(--accent);
+        }
+
+        /* ---------- Responsive ---------- */
+        @media (max-width: 60rem) {
+            .page {
+                grid-template-columns: 1fr;
+                margin-top: 1rem;
             }
+        }
 
-            html,
-            body {
-                margin: 0;
-                padding: 0;
-                min-height: 100%;
-            }
-
-            body {
-                background: #f8f9fb;
-                color: #111;
-                line-height: 1.6;
-            }
-
-            .page-shell {
-                display: flex;
-                flex-direction: column;
-                min-height: 100vh;
-            }
-
-            .site-header {
-                background: #1e293b;
-                color: #f8fafc;
-                padding: 1rem 1.25rem;
-                display: flex;
-                align-items: center;
-                justify-content: space-between;
+        @media (max-width: 36rem) {
+            .page {
+                width: 100%;
+                margin: 0 0 2rem;
                 gap: 1rem;
             }
 
-            .brand a {
-                color: #f8fafc;
-                text-decoration: none;
-                font-size: 1.25rem;
-                font-weight: 700;
+            .sidebar,
+            .content {
+                border-radius: 0;
+                border-left: 0;
+                border-right: 0;
             }
 
-            .nav-toggle {
-                display: none;
-                border: 0;
-                background: transparent;
-                color: #f8fafc;
-                font-size: 1.5rem;
-                cursor: pointer;
-            }
-
-            .site-nav {
-                display: flex;
-                gap: 1rem;
-                flex-wrap: wrap;
-                align-items: center;
-            }
-
-            .site-nav a {
-                color: #e2e8f0;
-                text-decoration: none;
-                font-weight: 500;
-            }
-
-            .site-nav a:hover,
-            .site-nav a:focus-visible {
-                color: #f8fafc;
-            }
-
-            .site-nav a i {
-                display: inline-block;
-                margin-right: 0.4rem;
-            }
-
-            .site-main {
-                width: min(1200px, calc(100% - 2rem));
-                margin: 2rem auto;
-                flex: 1;
-            }
-
-
-            .site-footer {
-                background: #111827;
-                color: #cbd5e1;
-                padding: 1rem 1.25rem;
-            }
-
-            .footer-content {
-                max-width: 1200px;
-                margin: 0 auto;
-            }
-
-            h1,
-            h2,
-            h3,
-            h4,
-            h5,
-            h6 {
-                color: #0f172a;
-                margin-top: 0;
-            }
-
-            p {
-                margin: 0 0 1rem;
-            }
-
-            .project-grid {
-                display: grid;
-                grid-template-columns: repeat(2, minmax(0, 1fr));
-                gap: 1.5rem;
-            }
-
-            .project-card,
-            .project-detail {
-                background: #ffffff;
-                border: 1px solid #e2e8f0;
-                border-radius: 1rem;
-                padding: 1.5rem;
-                box-shadow: 0 10px 30px rgba(15, 23, 42, 0.08);
-            }
-
-            .project-card h2 {
-                margin-top: 0;
-                margin-bottom: 0.75rem;
-                font-size: 1.25rem;
-            }
-
-            .project-card h2 a {
-                color: #0f172a;
-                text-decoration: none;
-            }
-
-            .project-card p {
-                margin-bottom: 1rem;
-                color: #475569;
-            }
-
-            .project-meta {
-                display: flex;
-                flex-wrap: wrap;
-                gap: 0.75rem;
-                color: #64748b;
-                font-size: 0.95rem;
-                align-items: center;
-            }
-
-            .project-meta .project-type {
-                white-space: nowrap;
-            }
-
-            .project-status {
-                display: inline-flex;
-                align-items: center;
-                padding: 0.25rem 0.75rem;
-                border-radius: 9999px;
-                font-size: 0.85rem;
-                font-weight: 600;
-                text-transform: uppercase;
-                letter-spacing: 0.08em;
-                background: #e2e8f0;
-                color: #0f172a;
-            }
-
-            .status-NOT_STARTED {
-                background: #fde68a;
-                color: #92400e;
-            }
-
-            .status-ANALYSIS {
-                background: #c7d2fe;
-                color: #3730a3;
-            }
-
-            .status-IN_PROGRESS {
-                background: #dbeafe;
-                color: #1e40af;
-            }
-
-            .status-PAUSED {
-                background: #f8fafc;
-                color: #334155;
-                border: 1px solid #cbd5e1;
-            }
-
-            .status-TESTING {
-                background: #fee2e2;
-                color: #991b1b;
-            }
-
-            .status-RELEASED {
-                background: #dcfce7;
-                color: #166534;
-            }
-
-            .status-MAINTENANCE {
-                background: #e0f2fe;
-                color: #0369a1;
-            }
-
-            .status-ARCHIVED {
-                background: #e2e8f0;
-                color: #475569;
-            }
-
-            .status-ABANDONED {
-                background: #f5f3ff;
-                color: #5b21b6;
-            }
-
-            .project-detail section {
-                margin-top: 1.5rem;
-            }
-
-            .project-detail section h2 {
-                margin-bottom: 0.75rem;
-                font-size: 1.1rem;
-            }
-
-            @media (max-width: 900px) {
-                .project-grid {
-                    grid-template-columns: 1fr;
-                }
-            }
-
-            @media (max-width: 768px) {
-                .site-header {
-                    flex-wrap: wrap;
-                    align-items: flex-start;
-                }
-
-                .nav-toggle {
-                    display: inline-flex;
-                }
-
-                .site-nav {
-                    width: 100%;
-                    flex-direction: column;
-                    gap: 0.75rem;
-                    margin-top: 1rem;
-                    display: none;
-                }
-
-                .site-nav.active {
-                    display: flex;
-                }
-
-                .site-main {
-                    margin: 1.5rem auto;
-                }
-            }
-
-            @media (prefers-reduced-motion: reduce) {
-                *,
-                *::before,
-                *::after {
-                    transition-duration: 0ms !important;
-                }
-            }
-
-            .cv-page {
-                display: grid;
-                grid-template-columns: 320px minmax(0, 1fr);
-                gap: 2rem;
-                align-items: start;
-            }
-
-            .cv-sidebar,
-            .cv-content {
-                background: #ffffff;
-                border: 1px solid #e2e8f0;
-                border-radius: 1.25rem;
-                box-shadow: 0 12px 32px rgba(15, 23, 42, 0.08);
-            }
-
-            .cv-sidebar {
-                padding: 2rem;
-                position: sticky;
-                top: 2rem;
-                background:
-                    linear-gradient(180deg, #0f172a 0%, #1e293b 100%);
-                color: #f8fafc;
-            }
-
-            .cv-content {
-                padding: 2rem;
-            }
-
-            .cv-name {
-                margin: 0 0 0.5rem;
-                font-size: 2rem;
-                line-height: 1.1;
-                color: #ffffff;
-            }
-
-            .cv-role {
-                margin: 0 0 1.5rem;
-                color: #cbd5e1;
-                font-size: 1rem;
-                font-weight: 600;
-                letter-spacing: 0.04em;
-                text-transform: uppercase;
-            }
-
-            .cv-summary {
-                margin-bottom: 2rem;
-                color: #e2e8f0;
-            }
-
-            .cv-contact,
-            .cv-skills,
-            .cv-languages {
-                margin-top: 2rem;
-            }
-
-            .cv-sidebar h2 {
-                margin-bottom: 0.75rem;
-                font-size: 0.95rem;
-                color: #ffffff;
-                text-transform: uppercase;
-                letter-spacing: 0.08em;
-            }
-
-            .cv-sidebar ul {
-                list-style: none;
-                padding: 0;
-                margin: 0;
-            }
-
-            .cv-sidebar li {
-                margin-bottom: 0.6rem;
-                color: #cbd5e1;
-            }
-
-            .cv-section + .cv-section {
-                margin-top: 2.5rem;
-            }
-
-            .cv-section-title {
-                margin-bottom: 1rem;
-                padding-bottom: 0.75rem;
-                border-bottom: 1px solid #e2e8f0;
-                font-size: 1.1rem;
-                text-transform: uppercase;
-                letter-spacing: 0.06em;
-                color: #0f172a;
-            }
-
-            .timeline {
-                display: grid;
-                gap: 1.25rem;
+            .sidebar {
+                --sp-x: 1.25rem;
+                --sp-y: 1.5rem;
             }
 
             .timeline-item {
-                position: relative;
-                padding: 1.25rem 1.25rem 1.25rem 1.5rem;
-                border-left: 3px solid #cbd5e1;
-                background: #f8fafc;
-                border-radius: 0 1rem 1rem 0;
+                padding: 1rem 1rem 1rem 1.1rem;
             }
+        }
 
-            .timeline-item h3 {
-                margin-bottom: 0.35rem;
-                font-size: 1.05rem;
-                color: #0f172a;
-            }
+        @media (prefers-reduced-motion: reduce) {
+            html { scroll-behavior: auto; }
+        }
+    </style>
+</head>
+<body>
+    <a class="skip-link" href="#contenu">Aller au contenu</a>
 
-            .timeline-meta {
-                margin-bottom: 0.75rem;
-                color: #475569;
-                font-size: 0.95rem;
-                font-weight: 600;
-            }
+    <svg width="0" height="0" style="position:absolute" aria-hidden="true" focusable="false">
+        <symbol id="i-pin" viewBox="0 0 24 24"><path d="M12 21s7-6.2 7-11.5A7 7 0 0 0 5 9.5C5 14.8 12 21 12 21z"/><circle cx="12" cy="9.5" r="2.5"/></symbol>
+        <symbol id="i-mail" viewBox="0 0 24 24"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="m3 7 9 6 9-6"/></symbol>
+        <symbol id="i-phone" viewBox="0 0 24 24"><path d="M5 4h4l2 5-2.5 1.5a11 11 0 0 0 5 5L15 13l5 2v4a2 2 0 0 1-2 2A15 15 0 0 1 3 6a2 2 0 0 1 2-2z"/></symbol>
+        <symbol id="i-link" viewBox="0 0 24 24"><path d="M10 14a4 4 0 0 0 5.7 0l3-3a4 4 0 0 0-5.7-5.7l-1 1"/><path d="M14 10a4 4 0 0 0-5.7 0l-3 3a4 4 0 0 0 5.7 5.7l1-1"/></symbol>
+        <symbol id="i-linkedin" viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="3"/><path d="M8 11v5M8 8v.01M12 16v-5M12 13a2.5 2.5 0 0 1 5 0v3"/></symbol>
+        <symbol id="i-globe" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M3 12h18M12 3a14 14 0 0 1 0 18M12 3a14 14 0 0 0 0 18"/></symbol>
+        <symbol id="i-check" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="m8 12.5 2.8 2.8L16 9.5"/></symbol>
+        <symbol id="i-code" viewBox="0 0 24 24"><path d="m8 8-4 4 4 4M16 8l4 4-4 4M13.5 5l-3 14"/></symbol>
+        <symbol id="i-chat" viewBox="0 0 24 24"><path d="M4 5h16v11H9l-5 4z"/><path d="M8 9.5h8M8 12.5h5"/></symbol>
+        <symbol id="i-user" viewBox="0 0 24 24"><circle cx="12" cy="8" r="4"/><path d="M4 21a8 8 0 0 1 16 0"/></symbol>
+    </svg>
 
-            .timeline-item p:last-child {
-                margin-bottom: 0;
-            }
+    <div class="page">
+        <aside class="sidebar">
+            <header class="side-hero">
+                <h1 class="name"><span class="first">Alban</span> <span class="last">Marmol</span></h1>
+                <p class="role">Développeur Full Stack</p>
+            </header>
+            <section class="side-block" aria-labelledby="t-contact">
+                <h2 id="t-contact"><svg class="icon" aria-hidden="true"><use href="#i-user"/></svg>Contact</h2>
+                <ul class="contact">
+                    <li><svg class="icon" aria-hidden="true"><use href="#i-mail"/></svg><span><span class="sr-only">Email : </span><a href="mailto:alban.marmol.perso@gmail.com">alban.marmol.perso@gmail.com</a></span></li>
+                    <li><svg class="icon" aria-hidden="true"><use href="#i-phone"/></svg><span><span class="sr-only">Téléphone : </span><a href="tel:+33698352998">06.98.35.29.98</a></span></li>
+                    <li><svg class="icon" aria-hidden="true"><use href="#i-pin"/></svg><span><span class="sr-only">Ville : </span>Montreuil</span></li>
+                    <li><svg class="icon" aria-hidden="true"><use href="#i-linkedin"/></svg><a href="https://www.linkedin.com/in/alban-marmol-b235b1241" target="_blank" rel="noopener">LinkedIn</a></li>
+                    <li><svg class="icon" aria-hidden="true"><use href="#i-link"/></svg><a href="https://albanmarmol.github.io/CV/" target="_blank" rel="noopener">Cv en ligne</a></li>
+                </ul>
+            </section>
 
-            /* Espace régulier dans chaque carte */
-            .timeline-item p {
-                margin: 0 0 0.65rem;
-            }
+            <section class="side-block" aria-labelledby="t-skills">
+                <h2 id="t-skills"><svg class="icon" aria-hidden="true"><use href="#i-check"/></svg>Compétences clés</h2>
+                <ul class="check">
+                    <li>Etude et analyse du besoin</li>
+                    <li>Gestion de projet</li>
+                    <li>Modélisation de données</li>
+                    <li>Architecture logicielle</li>
+                    <li>Développement backend</li>
+                    <li>Développement frontend</li>
+                    <li>Tests / qualité / maintenance</li>
+                </ul>
+            </section>
 
-            .timeline-item ul {
-                margin: 0.45rem 0 0;
-                padding-left: 1.1rem;
-                list-style: none;
-            }
+            <section class="side-block" aria-labelledby="t-tech">
+                <h2 id="t-tech"><svg class="icon" aria-hidden="true"><use href="#i-code"/></svg>Technologies</h2>
+                <div class="tech-group">
+                    <h3>Langages</h3>
+                    <ul class="chips">
+                        <li>Python</li>
+                        <li>Microsoft .NET</li>
+                        <li>ASP / PHP</li>
+                        <li>JavaScript</li>
+                        <li>HTML5</li>
+                        <li>CSS3</li>
+                        <li>SQL</li>
+                        <li>PLSQL</li>
+                    </ul>
+                </div>
+                <div class="tech-group">
+                    <h3>Frameworks et intégration</h3>
+                    <ul class="chips">
+                        <li>Django</li>
+                        <li>jQuery</li>
+                        <li>API REST</li>
+                        <li>ASP.NET MVC</li>
+                        <li>OCI Punchout</li>
+                        <li>SAP</li>
+                    </ul>
+                </div>
+                <div class="tech-group">
+                    <h3>Bases de données</h3>
+                    <ul class="chips">
+                        <li>PostgreSQL</li>
+                        <li>Oracle</li>
+                        <li>MySQL</li>
+                    </ul>
+                </div>
+                <div class="tech-group">
+                    <h3>Outils et cloud</h3>
+                    <ul class="chips">
+                        <li>Git</li>
+                        <li>AWS</li>
+                        <li>Copilot</li>
+                        <li>Terraform</li>
+                        <li>JIRA / Bitbucket</li>
+                        <li>Sublime Text</li>
+                        <li>VS Code</li>
+                    </ul>
+                </div>
+            </section>
 
-            .timeline-item li {
-                position: relative;
-                margin: 0 0 0.45rem;
-                padding-left: 0.95rem;
-                line-height: 1.45;
-                color: #1f2937;
-            }
+            <section class="side-block" aria-labelledby="t-lang">
+                <h2 id="t-lang"><svg class="icon" aria-hidden="true"><use href="#i-chat"/></svg>Langues</h2>
+                <ul>
+                    <li>Français : langue maternelle</li>
+                    <li>Anglais : niveau professionnel</li>
+                </ul>
+            </section>
 
-            /* Puce discrète et moderne */
-            .timeline-item li::before {
-                content: "";
-                position: absolute;
-                left: 0;
-                top: 0.74em; /* au lieu de 0.58em */
-                width: 0.38rem;
-                height: 0.38rem;
-                border-radius: 9999px;
-                background: #64748b;
-                transform: translateY(-50%);
-            }
+            <button class="theme-toggle" id="theme-toggle" type="button">Changer de thème</button>
+        </aside>
 
-            /* Mettre en valeur les lignes "Chiffres clés :" */
-            .timeline-item li:has(strong) {
-                background: #eaf2ff;
-                border: 1px solid #cfe0ff;
-                border-radius: 0.65rem;
-                padding: 0.55rem 0.7rem 0.55rem 1.5rem;
-                margin-top: 0.6rem;
-            }
+        <main class="content" id="contenu">
+            <section class="section profile" aria-labelledby="t-profil">
+                <h2 class="section-title" id="t-profil">Profil</h2>
+                <p>
+                    Développeur full stack avec près de 20 ans d’expérience dans la conception,
+                    le développement et la maintenance d’applications web métier, principalement
+                    pour Veolia Eau France. J’interviens sur l’ensemble du cycle de vie des applications : analyse des besoins, conception,
+                    développement backend et frontend, intégration avec les systèmes d’information,
+                    déploiement et accompagnement des utilisateurs.
+                </p>
+                <p>
+                    Habitué à travailler en lien direct avec les équipes métier, je privilégie
+                    des solutions fiables, maintenables et adaptées aux usages. Depuis 2025,
+                    j’intègre GitHub Copilot à mon flux de travail pour améliorer la productivité
+                    et la qualité du code. Je m’adapte rapidement à de nouvelles technologies
+                    et à de nouveaux environnements techniques.
+                </p>
+            </section>
 
-            .timeline-item li:has(strong)::before {
-                background: #2563eb;
-                width: 0.45rem;
-                height: 0.45rem;
-            }
-
-            /* Fallback si :has() n'est pas supporté:
-            ajoute class="kpi" sur les <li> Chiffres clés */
-            .timeline-item li.kpi {
-                position: relative; /* important pour centrer la puce sur ce bloc */
-                background: #eaf2ff;
-                border: 1px solid #cfe0ff;
-                border-radius: 0.65rem;
-                padding: 0.55rem 0.7rem 0.55rem 1.5rem;
-                margin-top: 0.6rem;
-            }
-
-            .timeline-item li.kpi::before {
-                left: 0.65rem;
-                top: 50%;
-                transform: translate(-50%, -50%);
-                background: #2563eb;
-                width: 0.45rem;
-                height: 0.45rem;
-            }
-
-            /* Petite respiration entre sections */
-            .cv-section-title + .timeline {
-                margin-top: 0.35rem;
-            }
-
-            /* Mobile: éviter les blocs trop denses */
-            @media (max-width: 640px) {
-                .timeline-item {
-                    padding: 1rem 0.95rem 1rem 1.1rem;
-                }
-
-                .timeline-item ul {
-                    padding-left: 0.9rem;
-                }
-
-                .timeline-item li {
-                    padding-left: 0.8rem;
-                    margin-bottom: 0.4rem;
-                }
-            }
-
-            .skill-tags {
-                display: flex;
-                flex-wrap: wrap;
-                gap: 0.75rem;
-            }
-
-            .skill-tags span {
-                display: inline-flex;
-                align-items: center;
-                padding: 0.55rem 0.9rem;
-                border-radius: 9999px;
-                background: #e2e8f0;
-                color: #0f172a;
-                font-size: 0.92rem;
-                font-weight: 600;
-            }
-            .skill-tags + .skill-tags {
-                margin-top: 1rem;
-                padding-top: 0.75rem;
-                border-top: 1px solid #e2e8f0;
-            }
-
-            @media (max-width: 900px) {
-                .cv-page {
-                    grid-template-columns: 1fr;
-                }
-
-                .cv-sidebar {
-                    position: static;
-                }
-            }
-
-            @media (max-width: 640px) {
-                .cv-sidebar,
-                .cv-content {
-                    padding: 1.5rem;
-                }
-
-                .cv-name {
-                    font-size: 1.7rem;
-                }
-            }
-            .timeline-item li.kpi::before {
-                display: none;
-            }
-            .timeline-item li:has(strong)::before {
-                display: none;
-            }
-
-            @page {
-            size: A4;
-            margin: 12mm;
-            }
-
-            @media print {
-                html,
-                body {
-                background: #fff !important;
-                }
-
-                /* Cache le chrome global du site */
-                .site-header,
-                .site-footer,
-                .nav-toggle {
-                    display: none !important;
-                }
-
-                .site-main {
-                    width: 100% !important;
-                    margin: 0 !important;
-                }
-
-                .cv-page {
-                    display: block !important;
-                    gap: 0 !important;
-                }
-
-                .cv-sidebar,
-                .cv-content {
-                    box-shadow: none !important;
-                    border: 1px solid #d1d5db !important;
-                    border-radius: 8px !important;
-                    background: #fff !important;
-                }
-
-                .cv-sidebar {
-                    position: static !important;
-                    color: #0f172a !important;
-                    margin-bottom: 10mm;
-                    padding: 6mm !important;
-                }
-
-                .cv-sidebar h2,
-                .cv-role,
-                .cv-summary,
-                .cv-sidebar li,
-                .cv-name {
-                    color: #0f172a !important;
-                }
-
-                .cv-content {
-                    padding: 6mm !important;
-                }
-
-                /* Evite les coupures de blocs */
-                .cv-section,
-                .timeline-item {
-                    break-inside: avoid;
-                    page-break-inside: avoid;
-                }
-
-                .timeline {
-                    gap: 4mm !important;
-                }
-
-                .timeline-item {
-                    border-left-color: #9ca3af !important;
-                    background: #fff !important;
-                }
-
-                /* KPI lisible en N&B */
-                .timeline-item li.kpi {
-                    background: #f3f4f6 !important;
-                    border-color: #d1d5db !important;
-                }
-
-                /* Pas de puce pour KPI */
-                .timeline-item li.kpi::before,
-                .timeline-item li:has(strong)::before {
-                    display: none !important;
-                }
-            }
-
-        </style>
-    </head>
-   
-
- <body>
-     <div class="page-shell">
-        <main class="site-main">
-            <section class="cv-page">
-                <aside class="cv-sidebar">
-                    <h1 class="cv-name">Alban Marmol</h1>
-                    <p class="cv-role">Développeur Full Stack</p>
-                    <p class="cv-summary">
-                        Conception d’applications web robustes.
-                    </p>
-
-                    <div class="cv-contact">
-                        <h2>Contact</h2>
-                        <ul>
-                            <li>Email : alban.marmol.perso@gmail.com</li>
-                            <li>Téléphone : 06.98.35.29.98</li>
-                            <li>Ville : Montreuil</li>
-                            <li><a href="https://www.linkedin.com/in/alban-marmol-b235b1241" target="_blank">LinkedIn</a></li>
-                            <!-- <li>GitHub : github.com/albanmarmol</li> -->
-                        </ul>
-                    </div>
-
-                    <div class="cv-skills">
-                        <h2>Compétences clés</h2>
-                        <ul>
-                            <li>Etude et analyse du besoin</li>
-                            <li>Gestion de projet</li>
-                            <li>Modélisation de données</li>
-                            <li>Architecture logicielle</li>
-                            <li>Développement backend</li>
-                            <li>Développement frontend</li>
-                            <li>Tests / qualité / maintenance</li>
-                        </ul>
-                    </div>
-
-                    <div class="cv-languages">
-                        <h2>Langues</h2>
-                        <ul>
-                            <li>Français : langue maternelle</li>
-                            <li>Anglais : niveau professionnel</li>
-                        </ul>
-                    </div>
-                </aside>
-
-                <div class="cv-content">
-                    <section class="cv-section">
-                        <h2 class="cv-section-title">Profil</h2>
+            <section class="section" aria-labelledby="t-exp">
+                <h2 class="section-title" id="t-exp">Expériences professionnelles</h2>
+                <div class="timeline">
+                    <article class="timeline-item">
+                        <h3>Développeur Full Stack - Juvanet</h3>
+                        <p class="timeline-meta">2007 – 2026 · Missions réalisées pour Veolia Eau, en Île-de-France et au niveau national</p>
                         <p>
-                            Développeur full stack avec près de 20 ans d’expérience dans la conception,
-                            le développement et la maintenance d’applications web métier, principalement
-                            pour Veolia Eau France. J’interviens sur l’ensemble du cycle de vie des applications : analyse des besoins, conception,
-                            développement backend et frontend, intégration avec les systèmes d’information,
-                            déploiement et accompagnement des utilisateurs.
+                            Conception, développement et évolution de plusieurs applications métier
+                            utilisées par les équipes opérationnelles, RH, financières, commerciales
+                            et achats. Intervention sur des produits suivis dans la durée, de l’analyse
+                            du besoin à la maintenance en conditions opérationnelles.
                         </p>
+
+                        <section class="mission-projects">
+                            <h4>Projets réalisés pour Veolia Eau</h4>
+
+                            <div class="mission-project">
+                                <h5>Reporting réglementaire (RAD)</h5>
+                                <p>Plateforme alimentée par les données de qualité de l’eau, de clientèle
+                                    et de patrimoine pour produire les rapports réglementaires.</p>
+                                <p>Automatisation de la collecte et du traitement des données, suivi et audit
+                                    des rapports, tableaux de bord pour les indicateurs de performance.</p>
+                                <div class="project-kpi">
+                                    <strong>Chiffres clés :</strong> plus de 5 000 rapports générés par an
+                                    depuis 2009 ; 500 utilisateurs actifs.
+                                </div>
+                            </div>
+
+                            <div class="mission-project">
+                                <h5>Gestion des approvisionnements</h5>
+                                <p>Application nationale de traitement des commandes interfacée à SAP,
+                                    avec catalogues fournisseurs Punchout selon la norme OCI.</p>
+                                <p>Génération des bons de commande, suivi des approvisionnements et des
+                                    réceptions, avec un workflow de validation administrable de manière centralisée.</p>
+                                <div class="project-kpi">
+                                    <strong>Chiffres clés :</strong> plus de 3 000 commandes transmises
+                                    chaque jour depuis 2015 ; 3 500 utilisateurs actifs en 2026.
+                                </div>
+                            </div>
+
+                            <div class="mission-project">
+                                <h5>Suivi des temps de travail</h5>
+                                <p>Rapprochement automatisé des temps avec les systèmes comptable,
+                                    commercial et RH. Génération et transmission des feuilles d’emploi
+                                    du temps hebdomadaires aux salariés et échanges avec les SI via des API REST.</p>
+                                <div class="project-kpi">
+                                    <strong>Chiffres clés :</strong> 80 à 90 % des heures rapprochées
+                                    automatiquement chaque semaine depuis 2016.
+                                </div>
+                            </div>
+
+                            <div class="mission-project">
+                                <h5>Migration vers AWS</h5>
+                                <p>Contribution à la migration de plusieurs applications critiques
+                                    depuis un datacenter physique vers le cloud.</p>
+                                <div class="project-kpi">
+                                    <strong>Résultat :</strong> amélioration de la disponibilité et
+                                    de la capacité d’évolution des applications.
+                                </div>
+                            </div>
+                        </section>
+                    </article>
+
+                    <article class="timeline-item">
+                        <h3>Développeur Full Stack - I-Comm</h3>
+                        <p class="timeline-meta">2006 – 2007 - Conception d'un intranet PHP / MYSQL pour une entreprise spécialisée dans la maintenance hardware de parcs informatiques.</p>
+                    </article>
+                </div>
+            </section>
+
+            <section class="section" aria-labelledby="t-edu">
+                <h2 class="section-title" id="t-edu">Diplômes et formations</h2>
+                <div class="timeline">
+                    <article class="timeline-item">
+                        <h3>Licence professionnelle Développement et administration Internet et Intranet (DA2I)</h3>
+                        <p class="timeline-meta">IUT Robert Schuman Le Havre - 2005</p>
                         <p>
-                            Habitué à travailler en lien direct avec les équipes métier, je privilégie
-                            des solutions fiables, maintenables et adaptées aux usages. Depuis 2025,
-                            j’intègre GitHub Copilot à mon flux de travail pour améliorer la productivité
-                            et la qualité du code. Je m’adapte rapidement à de nouvelles technologies
-                            et à de nouveaux environnements techniques.
+                            Formation spécialisée dans le développement et l'administration des applications Internet et Intranet, incluant la conception, le déploiement et la maintenance des systèmes web.
                         </p>
-                    </section>
-                    <section class="cv-section">
-                        <h2 class="cv-section-title">Expériences professionnelles</h2>
-                        <div class="timeline">
-                            <article class="timeline-item">
-                                <h3>Développeur Full Stack - Juvanet</h3>
-                                <p class="timeline-meta">2007 – 2026 · Missions réalisées pour Veolia Eau, en Île-de-France et au niveau national</p>
-                                <p> Conception, développement et évolution de plusieurs applications métier
-                                  utilisées par les équipes opérationnelles, RH, financières, commerciales
-                                  et achats. Intervention sur des produits suivis dans la durée, de l’analyse
-                                  du besoin à la maintenance en conditions opérationnelles.
-                                </p>
-                                <p><strong>Reporting réglementaire (RAD)</strong> — Plateforme alimentée par les données de qualité de l’eau, de clientèle et de patrimoine pour produire les rapports réglementaires.<br>
-                                    Automatisation de la collecte et du traitement des données pour garantir la conformité réglementaire.<br>
-                                    Suivi et audit des rapports produits pour assurer la traçabilité et la fiabilité des informations.<br>
-                                    Mise en place de tableaux de bord pour le suivi des indicateurs de performance et la prise de décision.<br>
-                                </p>
-                                <ul>
-                                    <li class="kpi"><strong>Chiffres clés :</strong> plus de 5 000 rapports générés par an depuis 2009 ; 500 utilisateurs actifs.</li>
-                                </ul>
+                    </article>
 
-                                <p><strong>Gestion des approvisionnements</strong> — Application nationale de traitement des commandes interfacée à SAP.<br>
-                                    Mise en place de catalogues Punchout selon la norme OCI pour faciliter l'intégration avec les fournisseurs.<br>
-                                    Génération automatique des bons de commande et suivi des approvisionnements.<br>
-                                    Gestion des réceptions.<br>
-                                </p>
-                                <ul>
-                                    <li class="kpi"><strong>Chiffres clés :</strong> plus de 3 000 commandes transmises chaque jour depuis 2015 ; 3 500 utilisateurs actifs en 2026 avec un workflow de validation complet et administrable de manière centralisée.</li>
-                                </ul>
-                                <p><strong>Suivi des temps de travail</strong> — Rapprochement automatisé des temps avec les systèmes comptable, commercial et RH.<br>
-                                    Génération et transmission automatique des feuilles d'emploi du temps hebdomadaires aux salariés.<br>
-                                    Automatisation des flux vers les SI RH et comptables via des API REST.<br>
-                                </p>
-                                <ul>
-                                    <li class="kpi"><strong>Chiffres clés :</strong> 80 à 90 % des heures rapprochées automatiquement chaque semaine depuis 2016.</li>
-                                </ul>
-                                <p><strong>Migration vers AWS</strong> — Contribution à la migration de plusieurs applications critiques depuis un datacenter physique vers le cloud.</p>
-                                <ul>
-                                    <li class="kpi"><strong>Résultat :</strong> migration ayant amélioré la disponibilité et la capacité d’évolution des applications.</li>
-                                </ul>
-                            </article>
-                            <article class="timeline-item">
-                                <h3>Développeur Full Stack - I-Comm</h3>
-                                <p class="timeline-meta">2006 – 2007 - Conception d'un intranet PHP / MYSQL pour entreprise spécialisée dans la maintenance hardware de parcs informatiques.</p>
-                            </article>
-                        </div>
-                    </section>
-                   
-
-                    <section class="cv-section">
-                        <h2 class="cv-section-title">Diplômes et formations</h2>
-                        <div class="timeline">
-                            <article class="timeline-item">
-                                <h3>Licence professionnelle Développement et administration Internet et Intranet (DA2I)</h3>
-                                <p class="timeline-meta">IUT Robert Schuman Le Havre - 2005</p>
-                                <p>
-                                    Formation spécialisée dans le développement et l'administration des applications Internet et Intranet, incluant la conception, le déploiement et la maintenance des systèmes web.
-                                </p>
-                            </article>
-
-                            <article class="timeline-item">
-                                <h3>Formation Afpa en Informatique Industrielle (orienté Internet)</h3>
-                                <p class="timeline-meta">AFPA - 2004</p>
-                                <p>
-                                    Formation axée sur l'informatique industrielle, incluant la programmation bas niveau, la supervision des systèmes industriels et l'intégration avec les technologies Internet.
-                                </p>
-                            </article>
-                        </div>
-                    </section>
-
-                    <section class="cv-section">
-                        <h2 class="cv-section-title">Tecnologies</h2>
-                        <div class="skill-tags">
-                            <span>Python</span>
-                            <span>Microsoft .NET</span>
-                            <span>ASP / PHP</span>
-                            <span>JavaScript</span>
-                            <span>HTML5</span>
-                            <span>CSS3</span>
-                            <span>SQL</span>
-                            <span>PLSQL</span>
-                        </div>
-                        <div class="skill-tags">
-                            <span>Django</span>
-                            <span>jQuery</span>
-                            <span>API REST</span>
-                            <span>ASP.NET MVC</span>
-                            <span>OCI Punchout</span>
-                            <span>SAP</span>
-                        </div>
-                        <div class="skill-tags">
-                            <span>PostgreSQL</span>
-                            <span>Oracle</span>
-                            <span>MySQL</span>
-                        </div>
-                        <div class="skill-tags">
-                            <span>Git</span>
-                            <span>AWS</span>
-                            <span>Copilot</span>
-                            <span>Terraform</span>
-                            <span>JIRA / Bitbucket</span>
-                            <span>Sublime Text</span>
-                            <span>VS Code</span>
-                        </div>
-                    </section>
+                    <article class="timeline-item">
+                        <h3>Formation Afpa en Informatique Industrielle (orienté Internet)</h3>
+                        <p class="timeline-meta">AFPA - 2004</p>
+                        <p>
+                            Formation axée sur l'informatique industrielle, incluant la programmation bas niveau, la supervision des systèmes industriels et l'intégration avec les technologies Internet.
+                        </p>
+                    </article>
                 </div>
             </section>
         </main>
     </div>
+
+    <script>
+        (function () {
+            var root = document.documentElement;
+            var button = document.getElementById('theme-toggle');
+            var media = window.matchMedia('(prefers-color-scheme: dark)');
+
+            function stored() {
+                try { return localStorage.getItem('theme'); } catch (e) { return null; }
+            }
+
+            function current() {
+                return root.getAttribute('data-theme') || (media.matches ? 'dark' : 'light');
+            }
+
+            var saved = stored();
+            if (saved === 'light' || saved === 'dark') {
+                root.setAttribute('data-theme', saved);
+            }
+
+            button.addEventListener('click', function () {
+                var next = current() === 'dark' ? 'light' : 'dark';
+                root.setAttribute('data-theme', next);
+                try { localStorage.setItem('theme', next); } catch (e) { /* stockage indisponible */ }
+            });
+        })();
+    </script>
 </body>
+</html>
