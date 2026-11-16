@@ -1,0 +1,336 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="CV d'Alban Marmol, développeur full stack spécialisé dans les applications métier.">
+  <title>CV – Alban Marmol | Développeur Full Stack</title>
+  <style>
+    :root {
+      color-scheme: light;
+      --ink: #172033;
+      --muted: #526078;
+      --navy: #142238;
+      --navy-2: #203653;
+      --line: #dce3ec;
+      --paper: #fff;
+      --page: #f3f6fa;
+      --accent: #4778bd;
+      --accent-soft: #eaf1fb;
+    }
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body {
+      margin: 0;
+      background: var(--page);
+      color: var(--ink);
+      font: 15px/1.58 Inter, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+    }
+    a { color: inherit; }
+    .page {
+      width: min(1180px, calc(100% - 36px));
+      margin: 36px auto;
+      display: grid;
+      grid-template-columns: 310px minmax(0, 1fr);
+      gap: 26px;
+      align-items: start;
+    }
+    .sidebar, .content {
+      border: 1px solid var(--line);
+      border-radius: 18px;
+      box-shadow: 0 12px 34px rgba(23, 32, 51, .08);
+    }
+    .sidebar {
+      position: sticky;
+      top: 24px;
+      padding: 30px 26px;
+      color: #f7f9fc;
+      background: linear-gradient(165deg, var(--navy), var(--navy-2));
+    }
+    .name {
+      margin: 0 0 8px;
+      color: #fff;
+      font-size: 2rem;
+      line-height: 1.08;
+      letter-spacing: -.035em;
+    }
+    .role {
+      margin: 0 0 20px;
+      color: #c9d7e9;
+      font-size: .88rem;
+      font-weight: 700;
+      letter-spacing: .09em;
+      text-transform: uppercase;
+    }
+    .tagline {
+      margin: 0;
+      color: #e1e9f3;
+      font-size: 1.02rem;
+    }
+    .side-section { margin-top: 30px; }
+    .side-section h2 {
+      margin: 0 0 12px;
+      color: #fff;
+      font-size: .82rem;
+      letter-spacing: .1em;
+      text-transform: uppercase;
+    }
+    .side-section ul {
+      margin: 0;
+      padding: 0;
+      list-style: none;
+    }
+    .side-section li {
+      margin: 0 0 9px;
+      color: #d2ddeb;
+      overflow-wrap: anywhere;
+    }
+    .side-section a { text-decoration: none; }
+    .side-section a:hover { text-decoration: underline; }
+    .content {
+      padding: 34px;
+      background: var(--paper);
+    }
+    .section + .section { margin-top: 34px; }
+    .section-title {
+      margin: 0 0 18px;
+      padding-bottom: 10px;
+      border-bottom: 1px solid var(--line);
+      color: var(--navy);
+      font-size: 1.05rem;
+      letter-spacing: .075em;
+      text-transform: uppercase;
+    }
+    p { margin: 0 0 12px; }
+    .profile { color: #344258; }
+    .timeline { display: grid; gap: 16px; }
+    .job, .education-item {
+      padding: 20px 21px;
+      border-left: 3px solid #a8bfdc;
+      border-radius: 0 12px 12px 0;
+      background: #f7f9fc;
+      break-inside: avoid;
+    }
+    .job h3, .education-item h3 {
+      margin: 0 0 4px;
+      color: var(--navy);
+      font-size: 1.02rem;
+      line-height: 1.35;
+    }
+    .meta {
+      margin: 0 0 12px;
+      color: var(--muted);
+      font-size: .91rem;
+      font-weight: 650;
+    }
+    .job p:last-child, .education-item p:last-child { margin-bottom: 0; }
+    .job ul {
+      margin: 8px 0 0;
+      padding-left: 20px;
+    }
+    .job li { margin: 0 0 7px; }
+    .metrics {
+      margin-top: 13px !important;
+      padding: 11px 13px;
+      border: 1px solid #d5e3f5;
+      border-radius: 9px;
+      background: var(--accent-soft);
+      color: #1e3b63;
+      list-style: none;
+    }
+    .metrics li { margin: 0; }
+    .metrics strong { color: #18375f; }
+    .skill-groups { display: grid; gap: 15px; }
+    .skill-group h3 {
+      margin: 0 0 8px;
+      color: var(--navy);
+      font-size: .94rem;
+    }
+    .tags { display: flex; flex-wrap: wrap; gap: 8px; }
+    .tags span {
+      display: inline-block;
+      padding: 6px 11px;
+      border: 1px solid #dce4ee;
+      border-radius: 999px;
+      background: #f2f5f9;
+      color: #24334a;
+      font-size: .88rem;
+      font-weight: 600;
+    }
+    .note { color: var(--muted); font-size: .9rem; }
+    @media (max-width: 850px) {
+      .page { grid-template-columns: 1fr; margin: 18px auto; gap: 18px; }
+      .sidebar { position: static; }
+    }
+    @media (max-width: 560px) {
+      .page { width: min(100% - 20px, 1180px); }
+      .sidebar, .content { padding: 23px 20px; border-radius: 14px; }
+      .name { font-size: 1.75rem; }
+      .job, .education-item { padding: 16px; }
+    }
+    @page { size: A4; margin: 12mm; }
+    @media print {
+      body { background: #fff; font-size: 10pt; }
+      .page {
+        display: block;
+        width: 100%;
+        margin: 0;
+      }
+      .sidebar, .content {
+        position: static;
+        border: 1px solid #cbd2dc;
+        border-radius: 8px;
+        box-shadow: none;
+      }
+      .sidebar {
+        margin-bottom: 8mm;
+        padding: 7mm;
+        background: #fff !important;
+        color: var(--ink);
+      }
+      .name, .role, .tagline, .side-section h2, .side-section li { color: var(--ink); }
+      .content { padding: 7mm; }
+      .section + .section { margin-top: 7mm; }
+      .job, .education-item { background: #fff; }
+      .metrics { background: #f3f5f8; }
+      a { text-decoration: none; }
+    }
+  </style>
+</head>
+<body>
+  <main class="page">
+    <aside class="sidebar">
+      <h1 class="name">Alban Marmol</h1>
+      <p class="role">Développeur Full Stack</p>
+      <p class="tagline">Conception et réalisation d’applications métier robustes et durables.</p>
+
+      <section class="side-section">
+        <h2>Contact</h2>
+        <ul>
+          <li><a href="mailto:alban.marmol.perso@gmail.com">alban.marmol.perso@gmail.com</a></li>
+          <li><a href="tel:+33698352998">06 98 35 29 98</a></li>
+          <li>Montreuil</li>
+          <li><a href="https://www.linkedin.com/in/alban-marmol-b235b1241" target="_blank" rel="noopener noreferrer">Profil LinkedIn</a></li>
+        </ul>
+      </section>
+
+      <section class="side-section">
+        <h2>Compétences clés</h2>
+        <ul>
+          <li>Analyse des besoins et conception</li>
+          <li>Architecture logicielle</li>
+          <li>Développement backend et frontend</li>
+          <li>Modélisation et intégration de données</li>
+          <li>Conception d’API et de flux inter-applicatifs</li>
+          <li>Gestion de projet et relation métier</li>
+          <li>Tests, qualité et maintenance</li>
+        </ul>
+      </section>
+
+      <section class="side-section">
+        <h2>Langues</h2>
+        <ul>
+          <li>Français : langue maternelle</li>
+          <li>Anglais : niveau professionnel</li>
+        </ul>
+      </section>
+    </aside>
+
+    <div class="content">
+      <section class="section">
+        <h2 class="section-title">Profil</h2>
+        <p class="profile">
+          Développeur full stack avec près de 20 ans d’expérience dans la conception,
+          le développement et la maintenance d’applications web métier, principalement
+          pour Veolia Eau en Île-de-France et à l’échelle nationale. J’interviens sur
+          l’ensemble du cycle de vie des applications : analyse des besoins, conception,
+          développement backend et frontend, intégration avec les systèmes d’information,
+          déploiement et accompagnement des utilisateurs.
+        </p>
+        <p class="profile">
+          Habitué à travailler en lien direct avec les équipes métier, je privilégie
+          des solutions fiables, maintenables et adaptées aux usages. Depuis 2025,
+          j’intègre GitHub Copilot à mon flux de travail pour améliorer la productivité
+          et la qualité du code. Je m’adapte rapidement à de nouvelles technologies
+          et à de nouveaux environnements techniques.
+        </p>
+      </section>
+
+      <section class="section">
+        <h2 class="section-title">Expérience professionnelle</h2>
+        <div class="timeline">
+          <article class="job">
+            <h3>Développeur Full Stack — Juvanet</h3>
+            <p class="meta">2007 – 2026 · Missions réalisées pour Veolia Eau, en Île-de-France et au niveau national</p>
+            <p>
+              Conception, développement et évolution de plusieurs applications métier
+              utilisées par les équipes opérationnelles, RH, financières, commerciales
+              et achats. Intervention sur des produits suivis dans la durée, de l’analyse
+              du besoin à la maintenance en conditions opérationnelles.
+            </p>
+            <ul>
+              <li><strong>Reporting réglementaire (RAD) :</strong> conception et déploiement progressif d’une plateforme nationale ; intégration de données issues des systèmes d’information techniques ; collaboration avec les directions commerciale et opérations ; formation et support des utilisateurs.</li>
+              <li><strong>Gestion des approvisionnements :</strong> conception et déploiement national d’une application métier ; mise en place des échanges avec l’ERP SAP ; collaboration avec la direction des achats sur le cadrage, la recette et les mises en production.</li>
+              <li><strong>Suivi et rapprochement des temps :</strong> développement d’une application connectée aux systèmes d’information comptable, commercial et RH ; conception et maintenance des flux ; collaboration avec les directions RH et financière.</li>
+              <li><strong>Applications intranet :</strong> développement de fonctionnalités backend et frontend pour les équipes métier ; optimisation des performances, maintenance et support utilisateur. Réalisations : infocentre RH, planification d’interventions et tableaux de bord financiers.</li>
+              <li><strong>Migration Cloud AWS :</strong> contribution à la migration de plusieurs applications depuis un datacenter physique vers une architecture cloud, avec adaptation applicative et stabilisation après migration.</li>
+            </ul>
+            <ul class="metrics">
+              <li><strong>Résultats clés :</strong> plus de 5 000 rapports réglementaires générés par an et environ 500 utilisateurs actifs ; plus de 3 000 commandes transmises quotidiennement à SAP et 3 500 utilisateurs actifs ; 80 à 90 % des heures travaillées rapprochées automatiquement avec le SI comptable chaque semaine.</li>
+            </ul>
+          </article>
+        </div>
+      </section>
+
+      <section class="section">
+        <h2 class="section-title">Compétences techniques</h2>
+        <div class="skill-groups">
+          <div class="skill-group">
+            <h3>Langages et développement</h3>
+            <div class="tags">
+              <span>JavaScript</span><span>Python</span><span>PHP</span><span>ASP</span>
+              <span>.NET</span><span>HTML5</span><span>CSS3</span><span>jQuery</span>
+            </div>
+          </div>
+          <div class="skill-group">
+            <h3>Frameworks et API</h3>
+            <div class="tags">
+              <span>Django</span><span>ASP.NET MVC</span><span>API REST</span>
+            </div>
+          </div>
+          <div class="skill-group">
+            <h3>Bases de données et intégration</h3>
+            <div class="tags">
+              <span>Oracle</span><span>PostgreSQL</span><span>SAP</span><span>Flux inter-applicatifs</span>
+            </div>
+          </div>
+          <div class="skill-group">
+            <h3>Outils et environnements</h3>
+            <div class="tags">
+              <span>Git</span><span>Bitbucket</span><span>JIRA</span><span>AWS</span>
+              <span>Terraform</span><span>VS Code</span><span>Sublime Text</span><span>GitHub Copilot</span>
+            </div>
+          </div>
+        </div>
+        <p class="note" style="margin-top:12px;">Les technologies sont présentées selon les expériences et usages à détailler en entretien.</p>
+      </section>
+
+      <section class="section">
+        <h2 class="section-title">Diplômes et formations</h2>
+        <div class="timeline">
+          <article class="education-item">
+            <h3>Licence professionnelle Développement et administration Internet et Intranet (DA2I)</h3>
+            <p class="meta">IUT Robert Schuman, Le Havre · 2005</p>
+            <p>Formation spécialisée dans le développement et l’administration d’applications Internet et Intranet, incluant leur conception, leur déploiement et leur maintenance.</p>
+          </article>
+          <article class="education-item">
+            <h3>Formation en informatique industrielle, orientée Internet</h3>
+            <p class="meta">AFPA · 2004</p>
+            <p>Formation axée sur l’informatique industrielle, la programmation, la supervision de systèmes et les technologies Internet.</p>
+          </article>
+        </div>
+      </section>
+    </div>
+  </main>
+</body>
+</html>

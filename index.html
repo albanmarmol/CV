@@ -493,6 +493,11 @@
                 font-size: 0.92rem;
                 font-weight: 600;
             }
+            .skill-tags + .skill-tags {
+                margin-top: 1rem;
+                padding-top: 0.75rem;
+                border-top: 1px solid #e2e8f0;
+            }
 
             @media (max-width: 900px) {
                 .cv-page {
@@ -615,7 +620,7 @@
             <section class="cv-page">
                 <aside class="cv-sidebar">
                     <h1 class="cv-name">Alban Marmol</h1>
-                    <p class="cv-role">Développeur Web</p>
+                    <p class="cv-role">Développeur Full Stack</p>
                     <p class="cv-summary">
                         Conception d’applications web robustes.
                     </p>
@@ -657,76 +662,63 @@
                     <section class="cv-section">
                         <h2 class="cv-section-title">Profil</h2>
                         <p>
-                            Avec 20 ans d'expérience dans le développement web, j'ai contribué au développement de nombreux projets internes pour Veolia Eau France et Île de France.<br>
-                            Depuis 2025, j'intègre Copilot dans mon flux de travail quotidien pour améliorer la productivité et la qualité du code.<br>
-                            Je suis également capable de m'adapter rapidement à des technologies que je ne maîtrise pas encore.
+                            Développeur full stack avec près de 20 ans d’expérience dans la conception,
+                            le développement et la maintenance d’applications web métier, principalement
+                            pour Veolia Eau France. J’interviens sur l’ensemble du cycle de vie des applications : analyse des besoins, conception,
+                            développement backend et frontend, intégration avec les systèmes d’information,
+                            déploiement et accompagnement des utilisateurs.
+                        </p>
+                        <p>
+                            Habitué à travailler en lien direct avec les équipes métier, je privilégie
+                            des solutions fiables, maintenables et adaptées aux usages. Depuis 2025,
+                            j’intègre GitHub Copilot à mon flux de travail pour améliorer la productivité
+                            et la qualité du code. Je m’adapte rapidement à de nouvelles technologies
+                            et à de nouveaux environnements techniques.
                         </p>
                     </section>
                     <section class="cv-section">
-                        <h2 class="cv-section-title">Expériences professionnelles - Missions menées en parallèle sur plusieurs produits internes</h2>
+                        <h2 class="cv-section-title">Expériences professionnelles</h2>
                         <div class="timeline">
                             <article class="timeline-item">
-                                <h3>Développeur Web - Juvanet (Veolia Eau Île-de-France)</h3>
-                                <p class="timeline-meta">2007 - 2013</p>
-                                <p>Développement d’applications Intranet pour les équipes métiers.</p>
+                                <h3>Développeur Full Stack - Juvanet</h3>
+                                <p class="timeline-meta">2007 – 2026 · Missions réalisées pour Veolia Eau, en Île-de-France et au niveau national</p>
+                                <p> Conception, développement et évolution de plusieurs applications métier
+                                  utilisées par les équipes opérationnelles, RH, financières, commerciales
+                                  et achats. Intervention sur des produits suivis dans la durée, de l’analyse
+                                  du besoin à la maintenance en conditions opérationnelles.
+                                </p>
+                                <p><strong>Reporting réglementaire (RAD)</strong> — Plateforme alimentée par les données de qualité de l’eau, de clientèle et de patrimoine pour produire les rapports réglementaires.<br>
+                                    Automatisation de la collecte et du traitement des données pour garantir la conformité réglementaire.<br>
+                                    Suivi et audit des rapports produits pour assurer la traçabilité et la fiabilité des informations.<br>
+                                    Mise en place de tableaux de bord pour le suivi des indicateurs de performance et la prise de décision.<br>
+                                </p>
                                 <ul>
-                                    <li>Conception et développement de nouvelles fonctionnalités backend et frontend.</li>
-                                    <li>Optimisation des performances et maintenance applicative.</li>
-                                    <li>Réalisations principales : Infocentre RH, planification d’interventions, tableaux de bord financiers.</li>
-                                    <li>Support utilisateur et accompagnement des équipes internes.</li>
+                                    <li class="kpi"><strong>Chiffres clés :</strong> plus de 5 000 rapports générés par an depuis 2009 ; 500 utilisateurs actifs.</li>
+                                </ul>
+
+                                <p><strong>Gestion des approvisionnements</strong> — Application nationale de traitement des commandes interfacée à SAP.<br>
+                                    Mise en place de catalogues Punchout selon la norme OCI pour faciliter l'intégration avec les fournisseurs.<br>
+                                    Génération automatique des bons de commande et suivi des approvisionnements.<br>
+                                    Gestion des réceptions.<br>
+                                </p>
+                                <ul>
+                                    <li class="kpi"><strong>Chiffres clés :</strong> plus de 3 000 commandes transmises chaque jour depuis 2015 ; 3 500 utilisateurs actifs en 2026 avec un workflow de validation complet et administrable de manière centralisée.</li>
+                                </ul>
+                                <p><strong>Suivi des temps de travail</strong> — Rapprochement automatisé des temps avec les systèmes comptable, commercial et RH.<br>
+                                    Génération et transmission automatique des feuilles d'emploi du temps hebdomadaires aux salariés.<br>
+                                    Automatisation des flux vers les SI RH et comptables via des API REST.<br>
+                                </p>
+                                <ul>
+                                    <li class="kpi"><strong>Chiffres clés :</strong> 80 à 90 % des heures rapprochées automatiquement chaque semaine depuis 2016.</li>
+                                </ul>
+                                <p><strong>Migration vers AWS</strong> — Contribution à la migration de plusieurs applications critiques depuis un datacenter physique vers le cloud.</p>
+                                <ul>
+                                    <li class="kpi"><strong>Résultat :</strong> migration ayant amélioré la disponibilité et la capacité d’évolution des applications.</li>
                                 </ul>
                             </article>
-
                             <article class="timeline-item">
-                                <h3>Développeur Web - Juvanet (Veolia Eau France)</h3>
-                                <p class="timeline-meta">2007 - 2026</p>
-                                <p>Développement d’une plateforme de reporting réglementaire pour la production des RAD.</p>
-                                <ul>
-                                    <li>Conception et déploiement progressif de la solution, région par région.</li>
-                                    <li>Collaboration avec les directions commerciale et opérations pour cadrage, recette et mise en production.</li>
-                                    <li>Intégration de données issues des SI techniques (qualité de l’eau, clientèle, patrimoine, etc.).</li>
-                                    <li>Formation des utilisateurs et support fonctionnel continu.</li>
-                                    <li class="kpi"><strong>Chiffres clés :</strong> +5 000 rapports générés par an depuis 2009, 500 utilisateurs actifs.</li>
-                                </ul>
-                            </article>
-
-                            <article class="timeline-item">
-                                <h3>Développeur Web - Juvanet (Veolia Eau France)</h3>
-                                <p class="timeline-meta">2009 - 2026</p>
-                                <p>Développement d’une application de gestion des approvisionnements.</p>
-                                <ul>
-                                    <li>Conception de la solution et déploiement progressif sur le périmètre national.</li>
-                                    <li>Mise en place des flux d’échange avec l’ERP SAP.</li>
-                                    <li>Travail en lien direct avec la direction des achats sur les cycles développement, recette et déploiement.</li>
-                                    <li>Formation des utilisateurs et maintien en conditions opérationnelles.</li>
-                                    <li class="kpi"><strong>Chiffres clés :</strong> à partir de 2015, plus de 3 000 commandes transmises à SAP chaque jour, 3 500 utilisateurs actifs en 2026.</li>
-                                </ul>
-                            </article>
-
-                            <article class="timeline-item">
-                                <h3>Développeur Web - Juvanet (Veolia Eau France)</h3>
-                                <p class="timeline-meta">2013 - 2026</p>
-                                <p>Développement d’une application de suivi et de rapprochement des temps de travail avec les SI comptable, commercial et RH.</p>
-                                <ul>
-                                    <li>Conception et déploiement progressif de la solution dans les régions.</li>
-                                    <li>Collaboration avec les directions RH et financière pour cadrage, recette et mise en production.</li>
-                                    <li>Conception et maintenance des flux entrants et sortants avec les applications métiers.</li>
-                                    <li>Accompagnement des utilisateurs et support technique.</li>
-                                    <li class="kpi"><strong>Chiffres clés :</strong> 80 à 90 % des heures travaillées rapprochées automatiquement au SI comptable chaque semaine depuis 2016, permettant de libérer du temps pour les équipes RH et les salariés.
-                                    </li>
-                                </ul>
-                            </article>
-
-                            <article class="timeline-item">
-                                <h3>Développeur Web - Juvanet (Veolia Eau France)</h3>
-                                <p class="timeline-meta">2014 - 2015</p>
-                                <p>Contribution à la migration d’applications d’un datacenter physique vers une architecture Cloud AWS.</p>
-                                <ul>
-                                    <li>Participation à la préparation technique de la migration.</li>
-                                    <li>Adaptation applicative pour l’hébergement cloud.</li>
-                                    <li>Appui à la stabilisation post-migration.</li>
-                                    <li class="kpi"><strong>Chiffres clés :</strong> Migration réussie de plusieurs applications critiques vers le cloud AWS, améliorant la disponibilité et la scalabilité des services.</li>
-                                </ul>
+                                <h3>Développeur Full Stack - I-Comm</h3>
+                                <p class="timeline-meta">2006 – 2007 - Conception d'un intranet PHP / MYSQL pour entreprise spécialisée dans la maintenance hardware de parcs informatiques.</p>
                             </article>
                         </div>
                     </section>
@@ -754,20 +746,31 @@
                     </section>
 
                     <section class="cv-section">
-                        <h2 class="cv-section-title">Technologies</h2>
+                        <h2 class="cv-section-title">Tecnologies</h2>
                         <div class="skill-tags">
-                            <span>Django</span>
                             <span>Python</span>
                             <span>Microsoft .NET</span>
-                            <span>MVC framework</span>
                             <span>ASP / PHP</span>
                             <span>JavaScript</span>
-                            <span>jQuery</span>
                             <span>HTML5</span>
                             <span>CSS3</span>
-                            <span>REST API</span>
+                            <span>SQL</span>
+                            <span>PLSQL</span>
+                        </div>
+                        <div class="skill-tags">
+                            <span>Django</span>
+                            <span>jQuery</span>
+                            <span>API REST</span>
+                            <span>ASP.NET MVC</span>
+                            <span>OCI Punchout</span>
+                            <span>SAP</span>
+                        </div>
+                        <div class="skill-tags">
                             <span>PostgreSQL</span>
                             <span>Oracle</span>
+                            <span>MySQL</span>
+                        </div>
+                        <div class="skill-tags">
                             <span>Git</span>
                             <span>AWS</span>
                             <span>Copilot</span>
